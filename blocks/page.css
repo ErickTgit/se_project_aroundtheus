@@ -2,6 +2,7 @@
   background-color: black;
   color: white;
   font-family: Inter, Arial, sans-serif;
+  padding: 45px 200px 60px;
 }
 
 .page__section {
@@ -18,9 +19,20 @@
   padding: 0 10px;
 }
 
-@media screen and (max-width: 1100px) {
-  .page__section {
-    margin: 0 20px;
-    margin-right: calc(100% - 40px);
+@media screen and (max-width: 1000px) {
+  .page {
+    padding: 45px 125px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .page {
+    padding: 45px 25px 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .page {
+    padding: 28px 0 0;
   }
 }

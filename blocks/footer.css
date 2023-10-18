@@ -6,9 +6,21 @@
 }
 
 .footer__text {
+  font-family: "Inter", Arial, sans-serif;
   display: flex;
   max-width: 318px;
   color: #545454;
   margin-bottom: 20px;
   margin-top: 20px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 620px) {
+  .footer__text {
+    color: #545454;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 }
