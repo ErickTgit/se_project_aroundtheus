@@ -22,6 +22,6 @@ Good luck and have fun!
 
 ## Added Animation to site
 
-![](Around The US Gif.gif)
+![Around The US Gif](https://github.com/ErickTgit/se_project_aroundtheus/assets/145604820/eae91fea-a5a2-49ef-b158-34d83ff07441)
 
 link to project: https://github.com/ErickTgit/se_project_aroundtheus.git
