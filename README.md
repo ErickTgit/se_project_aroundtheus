@@ -20,4 +20,8 @@ The way you'll do this at work is by exporting images directly from Figma — we
 
 Good luck and have fun!
 
+## Added Animation to site
+
+![](Around-The-US-Gif.gif)
+
 link to project: https://github.com/ErickTgit/se_project_aroundtheus.git
