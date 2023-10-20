@@ -19,19 +19,6 @@
   padding: 0 10px;
 }
 
-/* @media screen and (max-width: 1000px) {
-  .page {
-    padding: 45px 125px 0;
-  }
-} */
-
-/* @media screen and (min-width: 421px) and (max-width: 800px) {
-  .page {
-    padding: 45px 25px 0;
-  }
-}
-*/
-
 @media screen and (min-width: 751px) and (max-width: 900px) {
   .page {
     padding: 45px 10vw 60px;

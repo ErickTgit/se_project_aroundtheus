@@ -84,35 +84,6 @@
   margin-right: 30px;
 }
 
-/* @media screen and (max-width: 480px) {
-  .profile {
-    background-color: aqua;
-    flex-direction: column;
-  }
-
-  .profile__info {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .profile__description {
-    text-align: center;
-  }
-
-  .profile__title {
-    font-size: 22px;
-    margin: 0;
-    line-height: 26px;
-  }
-
-  .profile__add-button {
-    margin: 0;
-    width: 100%;
-  }
-} */
-
 @media screen and (max-width: 1150px) {
   .profile__edit-button {
     margin-right: 20px;
