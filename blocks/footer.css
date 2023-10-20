@@ -18,8 +18,13 @@
   line-height: normal;
 }
 
-@media screen and (min-width: 320px) and (max-width: 620px) {
+@media screen and (min-width: 320px) and (max-width: 750px) {
+  .footer {
+    margin: 0;
+  }
+
   .footer__text {
     font-size: 14px;
+    margin: 46px 0 0 0;
   }
 }
