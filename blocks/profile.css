@@ -98,6 +98,7 @@
   .profile {
     display: flex;
     justify-content: space-between;
+    overflow-x: hidden;
   }
 
   .profile__info {
@@ -106,12 +107,16 @@
     flex-wrap: wrap;
     margin: 0;
     min-width: 420px;
-    max-width: 500px;
+    max-width: 480px;
   }
 
   .profile__title {
     text-align: center;
     font-size: 42px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: no-wrap;
+    max-width: 350px;
   }
 
   .profile__description {
