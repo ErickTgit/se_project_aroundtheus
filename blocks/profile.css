@@ -96,9 +96,7 @@
 
 @media screen and (min-width: 621px) and (max-width: 900px) {
   .profile {
-    display: flex;
     justify-content: space-between;
-    overflow-x: hidden;
   }
 
   .profile__info {
@@ -106,16 +104,12 @@
     justify-content: start;
     flex-wrap: wrap;
     margin: 0;
-    min-width: 420px;
+    width: 420px;
     max-width: 480px;
   }
 
   .profile__title {
     text-align: center;
-    font-size: 42px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: no-wrap;
     max-width: 350px;
   }
 
