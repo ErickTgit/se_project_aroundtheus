@@ -63,10 +63,6 @@
   outline: none;
 }
 
-.modal__button {
-  margin-top: 28px;
-}
-
 .modal__close {
   background-image: url("../images/Close.svg");
   cursor: pointer;
@@ -82,18 +78,21 @@
 }
 
 .modal__button {
-  display: flex;
-  background-image: url("../images/Submit\ Button.svg");
   cursor: pointer;
   border: none;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
   width: 100%;
   height: 50px;
   color: transparent;
   align-items: flex-end;
+}
+
+.modal__button_submit {
+  padding-top: 20px;
+  background-image: url("../images/Submit\ Button.svg;");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
 }
 
 @media screen and (min-width: 320px) and (max-width: 630px) {
