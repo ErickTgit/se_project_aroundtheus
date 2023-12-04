@@ -47,7 +47,7 @@
   border: none;
 }
 
-input[type="text"] {
+.modal__input {
   border: none;
   padding-bottom: 13px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -59,7 +59,7 @@ input[type="text"] {
   line-height: normal;
 }
 
-input[type="text"]:focus {
+.modal__input:focus {
   outline: none;
 }
 
