@@ -22,7 +22,6 @@
   width: 430px;
   height: 330px;
   margin: auto;
-  align-items: center;
 }
 
 .modal__heading {
@@ -32,16 +31,18 @@
   font-style: normal;
   font-weight: 900;
   line-height: normal;
-  width: 330px;
+  width: 100%;
   height: 23px;
   margin: 0 0 54px;
+  position: relative;
+  right: calc(100%-38px);
 }
 
 .modal__form {
   flex-direction: column;
   display: flex;
-  width: 358px;
-  height: 14px;
+  width: 100%;
+  height: 100%;
   gap: 30px;
   border: none;
 }
@@ -81,12 +82,35 @@ input[type="text"]:focus {
 }
 
 .modal__button {
+  display: flex;
   background-image: url("../images/Submit\ Button.svg");
   cursor: pointer;
   border: none;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   background-color: transparent;
-  width: 358px;
+  width: 100%;
   height: 50px;
+  color: transparent;
+  align-items: flex-end;
+}
+
+@media screen and (min-width: 320px) and (max-width: 630px) {
+  .modal__container {
+    height: 322px;
+    width: 282px;
+    padding: 22px;
+  }
+
+  .modal__heading {
+    width: 238px;
+    height: 22px;
+    margin: 1px 0 75px;
+  }
+
+  .modal__close {
+    bottom: calc(100% + 14px);
+    right: 0;
+  }
 }
