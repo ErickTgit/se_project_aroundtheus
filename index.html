@@ -26,7 +26,11 @@
           />
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button
+              class="profile__edit-button"
+              id="profile-edit-button"
+              type="button"
+            ></button>
             <p class="profile__description">Explorer</p>
           </div>
           <button class="profile__add-button" type="button"></button>
@@ -42,7 +46,11 @@
               />
               <div class="card__description">
                 <h2 class="card__title">Yosemite Valley</h2>
-                <button class="card__like-button" type="button"></button>
+                <button
+                  class="card__like-button"
+                  id="like-button"
+                  type="button"
+                ></button>
               </div>
             </li>
 
@@ -113,9 +121,9 @@
       </footer>
     </div>
 
-    <div class="modal">
+    <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close"></button>
+        <button id="modal-close" class="modal__close"></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form">
           <input type="text" name="title" class="modal__input" />
