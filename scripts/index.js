@@ -26,16 +26,51 @@ const initialCards = [
 ];
 
 // ! ||--------------------------------------------------------------------------------||
-// ! ||                                   Elements;                                   ||
+// ! ||                                   Elements;                                    ||
 // ! ||--------------------------------------------------------------------------------||
+
 const profileEditButton = document.getElementById("profile-edit-button");
 const profileEditModal = document.getElementById("profile-edit-modal");
 const profileCloseModal = document.getElementById("modal-close");
+const profileTitle = document.querySelector(".profile__title");
+const profileDescription = document.querySelector(".profile__description");
+const profileTitleInput = document.getElementById("profile-title-input");
+const profileDescriptionInput = document.getElementById(
+  "profile-description-input"
+);
+const profileEditForm = profileEditModal.querySelector(".modal__form");
+
+// ! ||--------------------------------------------------------------------------------||
+// ! ||                                   Functions;                                   ||
+// ! ||--------------------------------------------------------------------------------||
+
+function closePopup() {
+  profileEditModal.classList.remove("modal__opened");
+}
+
+// ! ||--------------------------------------------------------------------------------||
+// ! ||                                 Event Handlers                                 ||
+// ! ||--------------------------------------------------------------------------------||
+
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closePopup();
+}
+
+// ! ||--------------------------------------------------------------------------------||
+// ! ||                                 Event Listeners                                ||
+// ! ||--------------------------------------------------------------------------------||
+
+profileCloseModal.addEventListener("click", () => {
+  closePopup();
+});
 
 profileEditButton.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
   profileEditModal.classList.add("modal__opened");
 });
 
-profileCloseModal.addEventListener("click", () => {
-  profileEditModal.classList.remove("modal__opened");
-});
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
