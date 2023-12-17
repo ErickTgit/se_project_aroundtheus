@@ -6,12 +6,11 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  /* display: flex; */
   padding: 0 19px;
   display: none;
 }
 
-.modal__opened {
+.modal_opened {
   display: flex;
 }
 
@@ -81,6 +80,10 @@
   background-repeat: no-repeat;
 }
 
+.modal__close:hover {
+  cursor: pointer;
+}
+
 .modal__button {
   outline: none;
   cursor: pointer;
@@ -90,6 +93,10 @@
   margin-top: 36px;
   padding-bottom: 0;
   margin-bottom: 0;
+}
+
+.modal__button:hover {
+  cursor: pointer;
 }
 
 /* .modal__button {
