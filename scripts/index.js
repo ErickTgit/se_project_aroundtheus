@@ -90,8 +90,10 @@ profileCloseModal.addEventListener("click", () => {
   closePopup();
 });
 
-profileEditButton.addEventListener("click", fillEditProfileForm);
-profileEditButton.addEventListener("click", openEditProfileModal);
+profileEditButton.addEventListener("click", () => {
+  fillEditProfileForm();
+  openEditProfileModal();
+});
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
