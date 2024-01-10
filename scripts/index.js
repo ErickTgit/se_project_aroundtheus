@@ -42,13 +42,16 @@ const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+const addNewCardButton = document.getElementById("profile-add-button");
+const addCardModal = document.getElementById("add-card-modal");
+const addCardCloseModal = addCardModal.querySelector(".modal__close");
 
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                   Functions;                                   ||
 // ! ||--------------------------------------------------------------------------------||
 
-function closePopup() {
-  profileEditModal.classList.remove("modal_opened");
+function closePopup(modal) {
+  modal.classList.remove("modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -82,17 +85,21 @@ function handleProfileEditSubmit(e) {
   closePopup();
 }
 
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+}
+
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                 Event Listeners                                ||
 // ! ||--------------------------------------------------------------------------------||
 
 profileCloseModal.addEventListener("click", () => {
-  closePopup();
+  closePopup(profileEditModal);
 });
 
 profileEditButton.addEventListener("click", () => {
   fillEditProfileForm();
-  openEditProfileModal();
+  openModal(profileEditModal);
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -100,4 +107,12 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
+});
+
+addCardCloseModal.addEventListener("click", () => {
+  closePopup(addCardModal);
+});
+
+addNewCardButton.addEventListener("click", () => {
+  openModal(addCardModal);
 });

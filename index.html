@@ -33,7 +33,11 @@
             ></button>
             <p class="profile__description">Explorer</p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            class="profile__add-button"
+            id="profile-add-button"
+            type="button"
+          ></button>
         </section>
         <!-- Cards -->
         <section class="cards page__section">
@@ -44,7 +48,7 @@
         <p class="footer__text">&copy; 2023 Around The U.S.</p>
       </footer>
     </div>
-
+    <!--Edit Modal-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button id="modal-close" class="modal__close"></button>
@@ -52,7 +56,7 @@
         <form class="modal__form">
           <input
             type="text"
-            name="title"
+            name="name"
             class="modal__input"
             id="profile-title-input"
             placeholder="Name"
@@ -64,6 +68,33 @@
             class="modal__input"
             id="profile-description-input"
             placeholder="description"
+          />
+          <button type="submit" class="modal__button modal__button_submit">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+    <!--Add Card Modal-->
+    <div class="modal" id="add-card-modal">
+      <div class="modal__container">
+        <button id="modal-close" class="modal__close"></button>
+        <h2 class="modal__heading">New Place</h2>
+        <form class="modal__form" id="add-card-form">
+          <input
+            type="text"
+            name="title"
+            class="modal__input"
+            id="input-type-title"
+            placeholder="Title"
+            required
+          />
+          <input
+            type="text"
+            name="url"
+            class="modal__input"
+            id="input-type-url"
+            placeholder="Image URL"
           />
           <button type="submit" class="modal__button modal__button_submit">
             Save
