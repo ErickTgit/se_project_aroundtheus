@@ -52,3 +52,13 @@
 .card__like-button_active {
   background-image: url("../images/activeHeart.svg");
 }
+
+.card__delete-button {
+  background: transparent url(../images/Trash.svg) center no-repeat;
+  border: none;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  top: 19px;
+  right: 15px;
+}
