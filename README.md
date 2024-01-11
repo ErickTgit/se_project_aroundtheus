@@ -39,3 +39,7 @@ Removed previous animation and added new features such as :
 - Ability to delete cards
 
 ![Sprint 5 Preview 3](https://github.com/ErickTgit/se_project_aroundtheus/assets/145604820/4099f1d5-fe11-4cd9-b1b7-04f0bdc65156)
+
+## Goals for Next Update
+
+So far, the frontend of this page is nearly complete. Features I would like to add in the future are a way to change the profile picture, as well as fix a bug where if an image is too large it displays outside of the screen. This can be seen when you preview Yosemite Valley for example.
