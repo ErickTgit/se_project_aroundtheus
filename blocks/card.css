@@ -5,6 +5,7 @@
   border-radius: 10px;
   overflow: hidden;
   max-width: 282px;
+  position: relative;
 }
 
 .card__image {
