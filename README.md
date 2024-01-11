@@ -24,8 +24,8 @@ Added animation when you hover over profile buttons. Added heart throb to like b
 
 ![Around The US Gif](https://github.com/ErickTgit/se_project_aroundtheus/assets/145604820/eae91fea-a5a2-49ef-b158-34d83ff07441)
 
-[!NOTE]
-[The heart animation has since been removed.]
+> [!NOTE]
+> The heart animation has since been removed.
 
 ## Update 2: New, Cleaner JavaScript code
 
