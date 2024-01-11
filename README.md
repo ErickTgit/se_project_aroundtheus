@@ -22,10 +22,6 @@ This is the 5th Sprint in the coding bootcamp TripleTen. Working with them had b
 
 ![Around The US Gif](https://github.com/ErickTgit/se_project_aroundtheus/assets/145604820/eae91fea-a5a2-49ef-b158-34d83ff07441)
 
-See it in action: https://ErickTgit.github.io/se_project_aroundtheus
-
-link to project repository: https://github.com/ErickTgit/se_project_aroundtheus.git
-
 ## Update 2: New, Cleaner JavaScript code
 
 Removed previous animation and added new features such as :
@@ -38,4 +34,3 @@ Removed previous animation and added new features such as :
 - Ability to delete cards
 
 ![Sprint 5 Preview 3](https://github.com/ErickTgit/se_project_aroundtheus/assets/145604820/4099f1d5-fe11-4cd9-b1b7-04f0bdc65156)
-
