@@ -36,3 +36,6 @@ Removed previous animation and added new features such as :
 - Preview images by clicking them
 - Transitions for opening each Modal
 - Ability to delete cards
+
+![Sprint 5 Preview 3](https://github.com/ErickTgit/se_project_aroundtheus/assets/145604820/4099f1d5-fe11-4cd9-b1b7-04f0bdc65156)
+
