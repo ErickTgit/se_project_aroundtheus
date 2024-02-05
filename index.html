@@ -60,15 +60,25 @@
             class="modal__input"
             id="profile-title-input"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
             required
           />
+          <span class="modal__error" id="profile-title-input-error"
+            >Error Message</span
+          >
           <input
             type="text"
             name="description"
             class="modal__input"
             id="profile-description-input"
+            minlength="2"
+            maxlength="200"
             placeholder="description"
           />
+          <span class="modal__error" id="profile-description-input-error"
+            >Error Message</span
+          >
           <button type="submit" class="modal__button modal__button_submit">
             Save
           </button>
@@ -121,6 +131,7 @@
         </div></li
     ></template>
 
-    <script src="./scripts/index.js" defer></script>
+    <script defer src="./scripts/index.js"></script>
+    <script defer src="./scripts/validation.js"></script>
   </body>
 </html>
