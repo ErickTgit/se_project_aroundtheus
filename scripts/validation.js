@@ -3,16 +3,15 @@
 
 function showInputError(formEl, inputEl, { inputErrorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classlist.add(inputErrorClass);
+  inputEl.classList.add(inputErrorClass);
   errorMessageEl.textContent = inputEl.validationMessage;
-  errorMessageEl.classlist.add(errorClass);
 }
 
-function hideInputError(formEl, inputEl, { inputErrorClass }) {
+function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classlist.remove(inputErrorClass);
+  inputEl.classList.remove(inputErrorClass);
   errorMessageEl.textContent = "";
-  errorMessageEl.classlist.remove(errorClass);
+  errorMessageEl.classList.remove(errorClass);
 }
 
 function checkInputValidtity(formEl, inputEl, options) {
@@ -25,25 +24,26 @@ function checkInputValidtity(formEl, inputEl, options) {
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   let foundInvalid = false;
-  inputEls.forEach((input) => {
+  inputEls.forEach((inputEl) => {
     if (!inputEl.validity.valid) {
       foundInvalid = true;
     }
   });
 
   if (foundInvalid) {
-    submitButton.classlist.add(inactiveButtonClass);
+    submitButton.classList.add(inactiveButtonClass);
     submitButton.disabled = true;
   } else {
-    submitButton.classlist.remove(inactiveButtonClass);
+    submitButton.classList.remove(inactiveButtonClass);
     submitButton.disabled = false;
   }
 }
 
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
-  const submitButton = formEl.querySelector(".modal__button");
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
+  const submitButton = formEl.querySelector(".modal__button");
+
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidtity(formEl, inputEl, options);
@@ -81,5 +81,4 @@ const config = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-
 enableValidation(config);

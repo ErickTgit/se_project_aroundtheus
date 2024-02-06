@@ -56,10 +56,6 @@ const previewImageCloseModal = previewImageModal.querySelector(".modal__close");
 // ! ||                                   Functions;                                   ||
 // ! ||--------------------------------------------------------------------------------||
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-}
-
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
@@ -131,8 +127,27 @@ function handleAddCardSubmit(e) {
   renderCard({ name, link }), cardWrap;
 }
 
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_opened");
+    closeModal(openModal);
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  modal.addEventListener("mousedown", closeModalOutside);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  modal.addEventListener("mousedown", closeModalOutside);
+}
+
+function closeModalOutside(e) {
+  if (e.target === e.currentTarget) {
+    closeModal(e.currentTarget);
+  }
 }
 
 // ! ||--------------------------------------------------------------------------------||
@@ -163,3 +178,5 @@ closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => closeModal(modal));
 });
+
+document.addEventListener("keydown", closeByEscape);
