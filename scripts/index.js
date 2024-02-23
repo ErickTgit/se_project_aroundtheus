@@ -137,11 +137,13 @@ function closeByEscape(evt) {
 function openModal(modal) {
   modal.classList.add("modal_opened");
   modal.addEventListener("mousedown", closeModalOutside);
+  document.addEventListener("keydown", closeByEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  modal.addEventListener("mousedown", closeModalOutside);
+  modal.removeEventListener("mousedown", closeModalOutside);
+  document.removeEventListener("keydown", closeByEscape);
 }
 
 function closeModalOutside(e) {
@@ -179,4 +181,4 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closeModal(modal));
 });
 
-document.addEventListener("keydown", closeByEscape);
+//document.addEventListener("keydown", closeByEscape);
