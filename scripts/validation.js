@@ -60,16 +60,16 @@ function enableValidation(options) {
     });
 
     setEventListeners(formEl, options);
-    // look for all inputs inside of form
-    //Loop through all the inputs to see if all are valid
-    //if input is not valid;
-    //grab validation message
-    //add error class to input
-    //display error message
-    //disable button
-    //if all inputs valid;
-    //enable button
-    //reset error messages
+    /* look for all inputs inside of form
+    Loop through all the inputs to see if all are valid
+    if input is not valid;
+    grab validation message
+    add error class to input
+    display error message
+    disable button
+    if all inputs valid;
+    enable button
+    reset error messages*/
   });
 }
 
