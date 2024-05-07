@@ -82,3 +82,6 @@ const config = {
   errorClass: "modal__error_visible",
 };
 enableValidation(config);
+
+const editFormValidator = new FormValidator();
+editFormValidator.enableValidation();

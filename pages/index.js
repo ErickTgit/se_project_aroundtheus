@@ -33,7 +33,7 @@ const cardData = {
 };
 
 const card = new Card(cardData, "#card-template");
-card.getView();
+card.getCardElement();
 
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                   Elements;                                    ||
@@ -91,9 +91,9 @@ function getCardElement(cardData) {
   //add click listener to the cardImage element+
   //openModal with previewImageModal+
 
-  //likeButton.addEventListener("click", () => {
-  // likeButton.classList.toggle("card__like-button_active");
-  //});
+  /*likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });*/
 
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -102,7 +102,7 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function renderCard(cardData, wrapper) {
+function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
   cardWrap.prepend(cardElement);
 }
