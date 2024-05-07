@@ -32,8 +32,9 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-const card = new Card(cardData, "#card-template");
+const card = new Card(cardData, "#card-template", handleImageClick);
 card.getCardElement();
+console.log(Card);
 
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                   Elements;                                    ||
@@ -103,7 +104,7 @@ function getCardElement(cardData) {
 }
 
 function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
+  const cardElement = new Card();
   cardWrap.prepend(cardElement);
 }
 
