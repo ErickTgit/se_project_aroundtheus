@@ -1,7 +1,8 @@
 export default class Card {
-  constructor({ name, link }, cardSelector, handleImageClick) {
-    this._name = name;
-    this._link = link;
+  constructor(data, cardSelector, handleImageClick) {
+    this._data = data;
+    this._name = data.name;
+    this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
   }
@@ -58,7 +59,6 @@ export default class Card {
     this._deleteButton = this._cardElement.querySelector(
       ".card__delete-button"
     );
-    console.log(this._deleteButton);
     // set event listeners
     this._setEventListeners();
     // return the card
