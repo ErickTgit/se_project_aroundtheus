@@ -1,6 +1,15 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -58,6 +67,7 @@ const addCardFormElement = document.forms["add-card-form"];
 const cardWrap = document.querySelector(".cards__list");
 const previewImageModal = document.getElementById("image-modal");
 const previewTextEl = previewImageModal.querySelector(".modal__image-text");
+const closeButtons = document.querySelectorAll(".modal__close");
 
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                   Functions;                                   ||
@@ -94,7 +104,7 @@ const previewTextEl = previewImageModal.querySelector(".modal__image-text");
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
   cardTitleEl.textContent = cardData.name;
-
+  
   return cardElement;
 }*/
 
@@ -111,6 +121,11 @@ function handleImageClick(cardEl) {
   openModal(previewImageModal);
 }
 
+initialCards.forEach((cardData) => renderCard(cardData, cardWrap));
+const profileEditValidator = new FormValidator(config, profileEditForm);
+const addCardValidator = new FormValidator(config, addCardFormElement);
+profileEditValidator.enableValidation();
+addCardValidator.enableValidation();
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                 EventHandlers                                  ||
 // ! ||--------------------------------------------------------------------------------||
@@ -177,22 +192,7 @@ addNewCardButton.addEventListener("click", () => {
   openModal(addCardModal);
 });
 
-initialCards.forEach((cardData) => renderCard(cardData, cardWrap));
-
-// ! ||--------------------------------------------------------------------------------||
-// ! ||                            CloseModalEventListeners;                           ||
-// ! ||--------------------------------------------------------------------------------||
-
-const closeButtons = document.querySelectorAll(".modal__close");
-
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => closeModal(modal));
 });
-
-//document.addEventListener("keydown", closeByEscape);
-
-const profileEditValidator = new FormValidator(config, profileEditForm);
-const addCardValidator = new FormValidator(config, addCardFormElement);
-profileEditValidator.enableValidation();
-addCardValidator.enableValidation();

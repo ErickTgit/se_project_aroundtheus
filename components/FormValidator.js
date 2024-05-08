@@ -1,7 +1,7 @@
 class FormValidator {
   constructor(settings, formElement) {
     this._inputSelector = settings.inputSelector;
-    this._submitButtonSelector = setings.submitButtonSelector;
+    this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
@@ -61,7 +61,7 @@ class FormValidator {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    setEventListeners(formElement, options);
+    _setEventListeners();
   }
 }
 
