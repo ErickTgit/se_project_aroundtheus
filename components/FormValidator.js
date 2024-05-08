@@ -27,7 +27,7 @@ class FormValidator {
     errorMessageEl.textContent = inputEl.validationMessage;
   }
 
-  _toggleButtonState() {
+  toggleButtonState() {
     const isFormValidResult = this._isFormValid(this._inputEls);
 
     if (!isFormValidResult) {
@@ -58,7 +58,7 @@ class FormValidator {
     this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
         this._checkInputValidity(inputEl);
-        this._toggleButtonState(this._inputEls);
+        this.toggleButtonState(this._inputEls);
       });
     });
   }

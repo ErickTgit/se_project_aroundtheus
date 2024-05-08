@@ -10,7 +10,6 @@ const config = {
   errorClass: "modal__error_visible",
   modalSpan: ".modal__span",
 };
-console.log(config.modalSpan);
 
 const initialCards = [
   {
@@ -106,7 +105,7 @@ function handleAddCardSubmit(e) {
   const link = cardUrlInput.value;
   e.target.reset();
   renderCard({ name, link }), cardWrap;
-  addCardValidator._toggleButtonState();
+  addCardValidator.toggleButtonState();
 }
 
 function closeByEscape(evt) {
