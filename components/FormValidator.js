@@ -5,6 +5,7 @@ class FormValidator {
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
+    this._modalSpan = settings.modalSpan;
     this._form = formElement;
   }
   _resetSubmitButton() {
@@ -12,10 +13,12 @@ class FormValidator {
   }
   hideInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(this._inputSelector);
+    const modalSpan = this._form.querySelector(this._modalSpan);
     inputEl.classList.remove(this._inputErrorClass);
-    console.log(errorMessageEl);
+    modalSpan.classList.remove(this._errorClass);
+    modalSpan.textContent = "";
     errorMessageEl.textContent = "";
-    errorMessageEl.classList.remove(this._errorClass);
+    errorMessageEl.classList.remove(this._inputErrorClass);
   }
 
   _showInputError(inputEl) {
@@ -44,7 +47,7 @@ class FormValidator {
     if (!inputEl.validity.valid) {
       this._showInputError(inputEl);
     } else {
-      this._hideInputError(inputEl);
+      this.hideInputError(inputEl);
     }
   }
 

@@ -8,7 +8,9 @@ const config = {
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
+  modalSpan: ".modal__span",
 };
+console.log(config.modalSpan);
 
 const initialCards = [
   {
