@@ -11,8 +11,9 @@ class FormValidator {
     _this._submitButton.classList.add(this._inactiveButtonClass);
   }
   hideInputError(inputEl) {
-    const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
+    const errorMessageEl = this._form.querySelector(this._inputSelector);
     inputEl.classList.remove(this._inputErrorClass);
+    console.log(errorMessageEl);
     errorMessageEl.textContent = "";
     errorMessageEl.classList.remove(this._errorClass);
   }
