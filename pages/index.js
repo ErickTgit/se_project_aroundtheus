@@ -1,4 +1,5 @@
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -190,3 +191,8 @@ closeButtons.forEach((button) => {
 });
 
 //document.addEventListener("keydown", closeByEscape);
+
+const profileEditValidator = new FormValidator(config, profileEditForm);
+const addCardValidator = new FormValidator(config, addCardFormElement);
+profileEditValidator.enableValidation();
+addCardValidator.enableValidation();

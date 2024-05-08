@@ -9,7 +9,7 @@ class FormValidator {
   }
   //
   hideInputError(inputEl) {
-    const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+    const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.remove(this._inputErrorClass);
     errorMessageEl.textContent = "";
     errorMessageEl.classList.remove(this._errorClass);
@@ -21,14 +21,14 @@ class FormValidator {
     errorMessageEl.textContent = inputEl.validationMessage;
   }
   //
-  _toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
+  _toggleButtonState(inputEls) {
     const isFormValidResult = isFormValid(inputEls);
 
     if (!isFormValidResult) {
-      submitButton.classList.add(inactiveButtonClass);
+      submitButton.classList.add(this._inactiveButtonClass);
       submitButton.disabled = true;
     } else {
-      submitButton.classList.remove(inactiveButtonClass);
+      submitButton.classList.remove(this._inactiveButtonClass);
       submitButton.disabled = false;
     }
   }
@@ -37,11 +37,11 @@ class FormValidator {
     return inputEls.every((inputEl) => inputEl.validity.valid);
   }
   //
-  _checkInputValidtity(inputEl, options) {
+  _checkInputValidtity(inputEl) {
     if (!inputEl.validity.valid) {
-      showInputError(this._form, inputEl, options);
+      return this._showInputError(inputEl);
     } else {
-      hideInputError(this._form, inputEl, options);
+      return this._hideInputError(inputEl);
     }
   }
   //
