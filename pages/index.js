@@ -37,14 +37,6 @@ const initialCards = [
   },
 ];
 
-/*const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};*/
-
-//const card = new Card(cardData, "#card-template", handleImageClick);
-//card.getCardElement();
-
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                   Elements;                                    ||
 // ! ||--------------------------------------------------------------------------------||
@@ -73,51 +65,14 @@ const closeButtons = document.querySelectorAll(".modal__close");
 // ! ||                                   Functions;                                   ||
 // ! ||--------------------------------------------------------------------------------||
 
-/*function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const previewImageEl = previewImageModal.querySelector(
-    ".modal__preview-image"
-  );
-
-  //!!!!const deleteButton = cardElement.querySelector(".card__delete-button");
-
-  //!!!! deleteButton.addEventListener("click", () => {
-  // !!!!cardElement.remove();
-  // !!!!});
-
-  cardImageEl.addEventListener("click", () => {
-    openModal(previewImageModal);
-    previewImageEl.src = cardData.link;
-    previewImageEl.alt = cardData.name;
-    previewTextEl.textContent = cardData.name;
-  });
-  //add click listener to the cardImage element+
-  //openModal with previewImageModal+
-
-  /*likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardTitleEl.textContent = cardData.name;
-  
-  return cardElement;
-}*/
-
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   cardWrap.prepend(card.getCardElement());
 }
-function handleImageClick(cardEl) {
-  cardEl.preventDefault;
-  previewImageModal.querySelector(".modal__preview-image").src = this._link;
-  previewImageModal.querySelector(".modal__preview-image").alt =
-    this._name + " ";
-  previewTextEl.textContent = this._name;
+function handleImageClick(link, name) {
+  previewImageModal.querySelector(".modal__preview-image").src = link;
+  previewImageModal.querySelector(".modal__preview-image").alt = name + " ";
+  previewTextEl.textContent = name;
   openModal(previewImageModal);
 }
 
