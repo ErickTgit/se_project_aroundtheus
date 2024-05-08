@@ -45,14 +45,14 @@ class FormValidator {
     }
   }
   //
-  _setEventListeners() {
+  _setEventListeners(settings) {
     this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
 
-    inputEls.forEach((inputEl) => {
+    this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
-        checkInputValidtity(this._form, inputEl, options);
-        toggleButtonState(inputEls, submitButton, options);
+        this._checkInputValidtity(this._form, inputEl, settings);
+        toggleButtonState(inputEls, submitButton, settings);
       });
     });
   }
@@ -61,7 +61,7 @@ class FormValidator {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    _setEventListeners();
+    this._setEventListeners();
   }
 }
 
