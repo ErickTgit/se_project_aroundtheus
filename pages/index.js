@@ -104,6 +104,7 @@ function handleAddCardSubmit(e) {
   const link = cardUrlInput.value;
   e.target.reset();
   renderCard({ name, link }), cardWrap;
+  addCardValidator._toggleButtonState();
 }
 
 function closeByEscape(evt) {
@@ -136,6 +137,7 @@ function closeModalOutside(e) {
 // ! ||--------------------------------------------------------------------------------||
 
 profileEditButton.addEventListener("click", () => {
+  profileEditValidator.hideInputError(profileEditForm);
   fillEditProfileForm();
   openModal(profileEditModal);
 });

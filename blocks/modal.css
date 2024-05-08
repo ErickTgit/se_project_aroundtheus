@@ -146,7 +146,6 @@
 }
 
 .modal__button_disabled:hover {
-  color: gray;
   opacity: 0.2;
   cursor: default;
 }

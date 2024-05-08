@@ -6,7 +6,6 @@ export default class Card {
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
   }
-
   // ! ||--------------------------------------------------------------------------------||
   // ! ||                                 EventListeners;                                ||
   // ! ||--------------------------------------------------------------------------------||
@@ -25,14 +24,14 @@ export default class Card {
   // ! ||                                 EventHandlers;                                 ||
   // ! ||--------------------------------------------------------------------------------||
 
-  _handleLikeButton() {
+  _handleLikeButton = () => {
     this._likeButton.classList.toggle(`card__like-button_active`);
-  }
+  };
 
-  _handleDeleteButton() {
+  _handleDeleteButton = () => {
     this._cardElement.remove();
     this._cardElement = null;
-  }
+  };
 
   // ! ||--------------------------------------------------------------------------------||
   // ! ||                                   ReturnCard;                                  ||
