@@ -27,10 +27,10 @@ const initialCards = [
   },
 ];
 
-const cardData = {
+/*const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
+};*/
 
 //const card = new Card(cardData, "#card-template", handleImageClick);
 //card.getCardElement();
@@ -49,20 +49,14 @@ const profileDescriptionInput = document.getElementById(
   "profile-description-input"
 );
 const profileEditForm = document.forms["profile-form"];
-const cardListEl = document.querySelector(".cards__list");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.getElementById("profile-add-button");
 const addCardModal = document.getElementById("add-card-modal");
-const addCardCloseModal = addCardModal.querySelector(".modal__close");
 const cardTitleinput = document.getElementById("input-type-title");
 const cardUrlInput = document.getElementById("input-type-url");
 const addCardFormElement = document.forms["add-card-form"];
 const cardWrap = document.querySelector(".cards__list");
 const previewImageModal = document.getElementById("image-modal");
-const previewImageCloseModal = previewImageModal.querySelector(".modal__close");
 const previewTextEl = previewImageModal.querySelector(".modal__image-text");
-console.log(previewImageModal);
 
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                   Functions;                                   ||
@@ -108,10 +102,11 @@ function renderCard(cardData) {
   cardWrap.prepend(card.getCardElement());
 }
 function handleImageClick(cardEl) {
+  cardEl.preventDefault;
   previewImageModal.querySelector(".modal__preview-image").src = this._link;
   previewImageModal.querySelector(".modal__preview-image").alt =
     this._name + " ";
-  previewTextEl.textContent = cardEl._name;
+  previewTextEl.textContent = this._name;
   openModal(previewImageModal);
 }
 
@@ -122,10 +117,6 @@ function handleImageClick(cardEl) {
 function fillEditProfileForm(e) {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-}
-
-function openPreviewPicture(e) {
-  e.preventDefault();
 }
 
 function handleProfileEditSubmit(e) {

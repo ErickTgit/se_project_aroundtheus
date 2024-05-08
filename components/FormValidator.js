@@ -8,7 +8,14 @@ class FormValidator {
     this._form = formElement;
   }
   //
-  _showInputError(inputEl, { inputErrorClass }) {
+  hideInputError(inputEl) {
+    const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+    inputEl.classList.remove(this._inputErrorClass);
+    errorMessageEl.textContent = "";
+    errorMessageEl.classList.remove(this._errorClass);
+  }
+  //
+  _showInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.add(this._inputErrorClass);
     errorMessageEl.textContent = inputEl.validationMessage;
@@ -30,11 +37,11 @@ class FormValidator {
     return inputEls.every((inputEl) => inputEl.validity.valid);
   }
   //
-  _checkInputValidtity(formEl, inputEl, options) {
+  _checkInputValidtity(inputEl, options) {
     if (!inputEl.validity.valid) {
-      showInputError(formEl, inputEl, options);
+      showInputError(this._form, inputEl, options);
     } else {
-      hideInputError(formEl, inputEl, options);
+      hideInputError(this._form, inputEl, options);
     }
   }
   //

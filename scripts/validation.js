@@ -1,5 +1,6 @@
 // enabling validation by calling enableValidation()
-// pass all the settings on call
+/*pass all the settings on call
+import FormValidator from "../components/FormValidator";
 
 function showInputError(formEl, inputEl, { inputErrorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
@@ -40,7 +41,6 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 
 function setEventListeners(formEl, options) {
   const { inputSelector, submitButtonSelector } = options;
-  console.log(submitButtonSelector);
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   const submitButton = formEl.querySelector(submitButtonSelector);
 
@@ -52,7 +52,8 @@ function setEventListeners(formEl, options) {
   });
 }
 
-function enableValidation(options) {
+//Added to FormValidator.js as enableValidation
+/*function enableValidation(options) {
   const formEls = [...document.querySelectorAll(options.formSelector)];
   formEls.forEach((formEl) => {
     formEl.addEventListener("submit", (evt) => {
@@ -60,7 +61,7 @@ function enableValidation(options) {
     });
 
     setEventListeners(formEl, options);
-    /* look for all inputs inside of form
+    ^ look for all inputs inside of form
     Loop through all the inputs to see if all are valid
     if input is not valid;
     grab validation message
@@ -69,9 +70,9 @@ function enableValidation(options) {
     disable button
     if all inputs valid;
     enable button
-    reset error messages*/
+    reset error messages^
   });
-}
+}*/
 
 const config = {
   formSelector: ".modal__form",
@@ -84,4 +85,4 @@ const config = {
 enableValidation(config);
 
 const editFormValidator = new FormValidator();
-editFormValidator.enableValidation();
+editFormValidator.enableValidation(config, this._form);
