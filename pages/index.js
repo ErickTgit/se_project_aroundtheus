@@ -35,13 +35,6 @@ const cardData = {
 //const card = new Card(cardData, "#card-template", handleImageClick);
 //card.getCardElement();
 
-function handleImageClick() {
-  previewImageCard.src = cardData.link;
-  previewImageCard.alt = cardData.name + " " + "Image";
-  previewImageTitle.textContent = cardData.name;
-  openPopup(previewImageModal);
-}
-
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                   Elements;                                    ||
 // ! ||--------------------------------------------------------------------------------||
@@ -68,6 +61,8 @@ const addCardFormElement = document.forms["add-card-form"];
 const cardWrap = document.querySelector(".cards__list");
 const previewImageModal = document.getElementById("image-modal");
 const previewImageCloseModal = previewImageModal.querySelector(".modal__close");
+const previewTextEl = previewImageModal.querySelector(".modal__image-text");
+console.log(previewImageModal);
 
 // ! ||--------------------------------------------------------------------------------||
 // ! ||                                   Functions;                                   ||
@@ -81,7 +76,6 @@ const previewImageCloseModal = previewImageModal.querySelector(".modal__close");
   const previewImageEl = previewImageModal.querySelector(
     ".modal__preview-image"
   );
-  const previewTextEl = previewImageModal.querySelector(".modal__image-text");
 
   //!!!!const deleteButton = cardElement.querySelector(".card__delete-button");
 
@@ -108,10 +102,17 @@ const previewImageCloseModal = previewImageModal.querySelector(".modal__close");
 
   return cardElement;
 }*/
+
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  card.getCardElement();
-  cardWrap.prepend();
+  cardWrap.prepend(card.getCardElement());
+}
+function handleImageClick(cardEl) {
+  previewImageModal.querySelector(".modal__preview-image").src = this._link;
+  previewImageModal.querySelector(".modal__preview-image").alt =
+    this._name + " ";
+  previewTextEl.textContent = cardEl._name;
+  openModal(previewImageModal);
 }
 
 // ! ||--------------------------------------------------------------------------------||
