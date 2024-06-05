@@ -62,8 +62,10 @@ popupWithImage.setEventListeners();
 const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
   (formData) => {
-    profileTitle.textContent = formData["profile-title-input"];
-    profileDescription.textContent = formData["profile-description-input"];
+    const title = formData[".profile-title-input"];
+    const description = formData[".profile-description-input"];
+    profileTitle.textContent = title;
+    profileDescription.textContent = description;
     profileEditPopup.close();
   }
 );
@@ -72,7 +74,7 @@ profileEditPopup.setEventListeners();
 const addCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
   const name = formData["input-type-title"];
   const link = formData["input-type-url"];
-  renderCard({ name, link });
+  renderCard(name, link);
   addCardPopup.close();
 });
 addCardPopup.setEventListeners();
