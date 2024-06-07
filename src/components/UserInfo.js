@@ -1,4 +1,3 @@
-// UserInfo.js
 export default class UserInfo {
   constructor(nameSelector, jobSelector) {
     this.nameElement = document.querySelector(nameSelector);
@@ -13,7 +12,9 @@ export default class UserInfo {
   }
 
   setUserInfo(newUserData) {
-    this.nameElement.textContent = newUserData.name;
-    this.jobElement.textContent = newUserData.job;
+    const { name, job } = newUserData;
+    console.log(newUserData);
+    this.nameElement.textContent = name;
+    this.jobElement.textContent = job;
   }
 }

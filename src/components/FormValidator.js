@@ -8,27 +8,36 @@ class FormValidator {
     this._modalSpan = settings.modalSpan;
     this._form = formElement;
   }
+
   _resetSubmitButton() {
-    _this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.classList.add(this._inactiveButtonClass);
   }
+
   hideInputError(inputEl) {
-    const errorMessageEl = this._form.querySelector(this._inputSelector);
+    const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
     const modalSpan = this._form.querySelector(this._modalSpan);
     inputEl.classList.remove(this._inputErrorClass);
-    modalSpan.classList.remove(this._errorClass);
-    modalSpan.textContent = "";
-    errorMessageEl.textContent = "";
-    errorMessageEl.classList.remove(this._inputErrorClass);
+    if (modalSpan) {
+      modalSpan.classList.remove(this._errorClass);
+      modalSpan.textContent = "";
+    }
+    if (errorMessageEl) {
+      errorMessageEl.textContent = "";
+      errorMessageEl.classList.remove(this._inputErrorClass);
+    }
   }
 
   _showInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.add(this._inputErrorClass);
-    errorMessageEl.textContent = inputEl.validationMessage;
+    if (errorMessageEl) {
+      errorMessageEl.textContent = inputEl.validationMessage;
+      errorMessageEl.classList.add(this._errorClass);
+    }
   }
 
   toggleButtonState() {
-    const isFormValidResult = this._isFormValid(this._inputEls);
+    const isFormValidResult = this._isFormValid();
 
     if (!isFormValidResult) {
       this._submitButton.classList.add(this._inactiveButtonClass);
@@ -58,7 +67,7 @@ class FormValidator {
     this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", () => {
         this._checkInputValidity(inputEl);
-        this.toggleButtonState(this._inputEls);
+        this.toggleButtonState();
       });
     });
   }
@@ -68,6 +77,10 @@ class FormValidator {
       evt.preventDefault();
     });
     this._setEventListeners();
+  }
+
+  getInputValues() {
+    return this._inputEls.map((inputEl) => inputEl.value).join(", ");
   }
 }
 

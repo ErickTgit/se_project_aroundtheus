@@ -73,8 +73,10 @@ profileEditPopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
   const name = formData["input-type-title"];
+  console.log({ name });
   const link = formData["input-type-url"];
-  renderCard(name, link);
+  console.log(link);
+  renderCard({ name, link });
   addCardPopup.close();
 });
 addCardPopup.setEventListeners();
