@@ -15,12 +15,7 @@ class FormValidator {
 
   hideInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
-    const modalSpan = this._form.querySelector(this._modalSpan);
     inputEl.classList.remove(this._inputErrorClass);
-    if (modalSpan) {
-      modalSpan.classList.remove(this._errorClass);
-      modalSpan.textContent = "";
-    }
     if (errorMessageEl) {
       errorMessageEl.textContent = "";
       errorMessageEl.classList.remove(this._inputErrorClass);
@@ -77,10 +72,6 @@ class FormValidator {
       evt.preventDefault();
     });
     this._setEventListeners();
-  }
-
-  getInputValues() {
-    return this._inputEls.map((inputEl) => inputEl.value).join(", ");
   }
 }
 
