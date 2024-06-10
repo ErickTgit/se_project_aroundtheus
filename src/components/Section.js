@@ -15,4 +15,3 @@ export default class Section {
     this._container.prepend(element);
   }
 }
-//if this file shows up lowercase in git, I'm not sure why. They are uppercase in my local files.

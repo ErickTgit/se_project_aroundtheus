@@ -61,8 +61,13 @@ const cardSection = new Section(
 cardSection.renderItems();
 
 function renderCard(cardData) {
+  const card = createCard(cardData);
+  cardSection.addItem(card);
+}
+//Added Create Card Function
+function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  cardSection.addItem(card.getCardElement());
+  return card.getCardElement();
 }
 
 function handleImageClick(link, name) {
