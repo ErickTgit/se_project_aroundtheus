@@ -52,8 +52,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (cardData) => {
-      const card = new Card(cardData, "#card-template", handleImageClick);
-      cardSection.addItem(card.getCardElement());
+      renderCard(cardData);
     },
   },
   ".cards__list"
@@ -63,7 +62,7 @@ cardSection.renderItems();
 
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  cardWrap.prepend(card.getCardElement());
+  cardSection.addItem(card.getCardElement());
 }
 
 function handleImageClick(link, name) {
@@ -75,12 +74,6 @@ const profileEditValidator = new FormValidator(config, profileEditForm);
 const addCardValidator = new FormValidator(config, addCardFormElement);
 profileEditValidator.enableValidation();
 addCardValidator.enableValidation();
-
-// Event Handlers
-function fillEditProfileForm() {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-}
 
 // Event Listeners
 
@@ -94,15 +87,4 @@ profileEditButton.addEventListener("click", () => {
 
 addNewCardButton.addEventListener("click", () => {
   addCardPopup.open();
-});
-
-profileEditForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
-
-addCardFormElement.addEventListener("submit", (e) => {
-  e.preventDefault();
-  addCardPopup.close();
-  e.target.reset();
-  addCardValidator.toggleButtonState();
 });
