@@ -15,8 +15,5 @@ export default class PopupWithImage extends Popup {
     this._captionElement.textContent = name;
     super.open();
   }
-
-  setEventListeners() {
-    super.setEventListeners();
-  }
 }
+//if this file shows up lowercase in git, I'm not sure why. They are uppercase in my local files.
