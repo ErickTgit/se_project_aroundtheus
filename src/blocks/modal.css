@@ -160,6 +160,7 @@
   line-height: normal;
   color: #ff0000;
   flex-wrap: wrap;
+  height: 0.01vh;
 }
 
 @media screen and (min-width: 320px) and (max-width: 630px) {

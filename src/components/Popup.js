@@ -10,7 +10,6 @@ export default class Popup {
     this._popupElement.classList.add("modal_opened");
     document.addEventListener("keydown", this._handleEscClose);
     this._popupElement.addEventListener("mousedown", this._closePopupOutside);
-    this._submitButton.disabled = true;
   }
 
   close() {
