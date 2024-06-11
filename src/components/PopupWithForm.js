@@ -22,14 +22,14 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit(this._getInputValues());
     this.close();
     this._popupForm.reset();
-    this._resetSubmitButton();
+    //this._resetSubmitButton();
   };
   //resets the submit button after submitting
-  _resetSubmitButton() {
+  /*_resetSubmitButton() {
     this._submitButton.disabled = true;
     this._submitButton.classList.add("modal__button_disabled");
   }
-
+*/
   setEventListeners() {
     super.setEventListeners();
     this._popupForm.addEventListener("submit", this._handleSubmit);

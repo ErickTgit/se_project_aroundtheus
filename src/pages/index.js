@@ -88,8 +88,13 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = name;
   profileDescriptionInput.value = description;
   profileEditPopup.open();
+  profileEditValidator.resetValidation();
+  profileEditValidator.toggleButtonState();
+  debugger;
 });
 
 addNewCardButton.addEventListener("click", () => {
   addCardPopup.open();
+  addCardValidator.resetValidation();
+  addCardValidator.toggleButtonState();
 });
