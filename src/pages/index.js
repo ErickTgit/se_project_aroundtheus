@@ -57,7 +57,6 @@ const userInfo = new UserInfo({
 //Declare PopupWithForm for addCardModal:
 const addCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
   handleAddCardSubmit(formData);
-  console.log(formData);
 });
 addCardPopup.setEventListeners();
 
@@ -65,7 +64,6 @@ addCardPopup.setEventListeners();
 const profileImageModal = new PopupWithForm(
   "#profile-image-modal",
   (formData) => {
-    console.log(formData);
     handleChangeProfilePicture(formData.url);
   }
 );
@@ -96,7 +94,6 @@ function handleImageClick(link, name) {
 }
 
 function handleEditProfileSubmit(inputValues) {
-  console.log(inputValues);
   profileEditModal.renderLoading("Saving...");
   api
     .updateUserInfo(inputValues)
@@ -105,7 +102,7 @@ function handleEditProfileSubmit(inputValues) {
       profileEditValidator.resetValidation();
     })
     .catch((err) => {
-      console.log(err);
+      console.log(`Unable to process request, ${err}`);
     })
     .finally(() => {
       profileEditModal.close();
@@ -129,7 +126,6 @@ function handleAddCardSubmit(inputValues) {
 
 function handleDeleteButton(card) {
   deleteImageModal.open();
-  console.log(card.id);
   deleteImageModal.handleDelete(() => {
     deleteImageModal.renderLoading("Saving...");
     api
@@ -138,7 +134,7 @@ function handleDeleteButton(card) {
         card.deleteCard();
       })
       .catch((err) => {
-        console.log(err);
+        console.log(`Unable to process request, ${err}`);
       })
       .finally(() => {
         deleteImageModal.close();
@@ -155,7 +151,7 @@ function handleLikeButton(card) {
         card.handleIsLiked(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(`Unable to process request, ${err}`);
       });
   }
   if (!card.isLiked) {
@@ -228,8 +224,6 @@ api
 api
   .getInitialCards()
   .then((cards) => {
-    console.log(cards);
-
     cardSection = new Section(
       {
         items: cards,
