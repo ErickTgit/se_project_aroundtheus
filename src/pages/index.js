@@ -35,7 +35,7 @@ const profileEditModal = new PopupWithForm(
     handleEditProfileSubmit(formData);
   }
 );
-console.log("test");
+
 profileEditModal.setEventListeners();
 
 //Declare API class:
