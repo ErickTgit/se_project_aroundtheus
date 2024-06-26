@@ -4,7 +4,6 @@ export default class Popup {
     this._handleEscClose = this._handleEscClose.bind(this);
     this._closePopupOutside = this._closePopupOutside.bind(this);
     this._closeButton = this._popupElement.querySelector(".modal__close");
-    this._modalButton = this._popupElement.querySelector(".modal__button");
   }
 
   open() {
@@ -32,10 +31,6 @@ export default class Popup {
     if (e.target === this._popupElement) {
       this.close();
     }
-  }
-
-  renderLoading(buttonText) {
-    this._modalButton.textContent = buttonText;
   }
 
   setEventListeners() {
