@@ -8,6 +8,7 @@
   <body class="page">
     <div class="page__content">
       <!-- header -->
+
       <header class="header page__section">
         <img
           src="<%=require('./images/Vector.svg')%>"
@@ -23,6 +24,11 @@
             alt="avatar"
             class="profile__image"
           />
+          <button
+            type="button"
+            id="avatar-button"
+            class="profile__image_edit-button"
+          ></button>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -38,6 +44,41 @@
             type="button"
           ></button>
         </section>
+        <!--Change Profile Picture Modal-->
+
+        <div class="modal" id="profile-image-modal">
+          <div class="modal__container">
+            <button class="modal__close"></button>
+            <h2 class="modal__heading">Change Profile Picture</h2>
+            <form
+              class="modal__form"
+              id="profile-image-form"
+              name="profile-image-form"
+            >
+              <label class="modal__label">
+                <input
+                  type="url"
+                  name="url"
+                  class="modal__input"
+                  id="input-type-url"
+                  placeholder="Image URL"
+                  required />
+                <span
+                  class="modal__span modal__error"
+                  id="input-type-url-error"
+                ></span
+              ></label>
+              <button
+                type="submit"
+                class="modal__button modal__button_disabled modal__button_submit"
+                disabled
+              >
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
+
         <!-- Cards -->
         <section class="cards page__section">
           <ul class="cards__list"></ul>
@@ -47,12 +88,13 @@
         <p class="footer__text">&copy; 2023 Around The U.S.</p>
       </footer>
     </div>
+
     <!--Edit Profile Modal-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close"></button>
         <h2 class="modal__heading">Edit Profile</h2>
-        <form class="modal__form" name="profile-form">
+        <form class="modal__form" name="profile-form" name="profile-form">
           <label class="modal__label">
             <input
               type="text"
@@ -79,7 +121,6 @@
               maxlength="200"
               placeholder="description"
               required />
-
             <span
               class="modal__span modal__error"
               id="profile-description-input-error"
@@ -91,12 +132,13 @@
         </form>
       </div>
     </div>
+
     <!--Add Card Modal-->
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button class="modal__close"></button>
         <h2 class="modal__heading">New Place</h2>
-        <form class="modal__form" id="add-card-form">
+        <form class="modal__form" id="add-card-form" name="add-card-form">
           <label class="modal__label">
             <input
               type="text"
@@ -134,6 +176,7 @@
         </form>
       </div>
     </div>
+
     <!--Image Modal-->
     <div class="modal" id="image-modal">
       <div class="modal__container modal__container_type_preview">
@@ -143,6 +186,24 @@
       </div>
     </div>
 
+    <!--Delete Card Modal-->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <h2 class="modal__heading">Are You Sure?</h2>
+        <form class="modal__form" id="form-delete" name="deleteForm">
+          <button
+            type="submit"
+            id="delete-card-button"
+            class="modal__button modal__button_submit"
+            enabled
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+    <!--Card Template-->
     <template id="card-template">
       <li class="card">
         <img src="./images/lago.jpg" alt="Lago Di Braies" class="card__image" />
@@ -153,7 +214,11 @@
             id="card__like-button"
             type="button"
           ></button>
-          <button class="card__delete-button" type="button"></button>
+          <button
+            id="card-delete-button"
+            class="card__delete-button"
+            type="button"
+          ></button>
         </div></li
     ></template>
   </body>
