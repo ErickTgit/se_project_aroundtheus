@@ -95,7 +95,6 @@ function handleImageClick(link, name) {
 }
 
 function handleSubmit(request, popupInstance, loadingText = "Saving...") {
-  // here we change the button text
   popupInstance.renderLoading(true, loadingText);
   request()
     .then(() => {
