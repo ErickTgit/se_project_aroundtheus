@@ -99,6 +99,7 @@ function handleSubmit(
   request()
     .then(() => {
       popupInstance.close();
+
       if (reset) {
         popupInstance.reset();
       }
@@ -135,7 +136,7 @@ function handleDeleteButton(card) {
         card.deleteCard();
       });
     }
-    handleSubmit(makeRequest, deleteImageModal, false);
+    handleSubmit(makeRequest, deleteImageModal, false, "Deleting...");
   });
 }
 
@@ -187,6 +188,7 @@ addNewCardButton.addEventListener("click", () => {
 
 profileImageEditButton.addEventListener("click", () => {
   profileImageModal.open();
+  formValidators["profile-image-form"].resetValidation();
 });
 
 api
