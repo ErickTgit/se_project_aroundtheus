@@ -13,15 +13,10 @@ import PopupDeleteCard from "../components/PopupDeleteCard.js";
 const profileImageEditButton = document.getElementById("avatar-button");
 const profileEditButton = document.getElementById("profile-edit-button");
 const addNewCardButton = document.getElementById("profile-add-button");
-const profileEditImage = document.getElementById("profile-image-modal");
 const profileTitleInput = document.getElementById("profile-title-input");
 const profileDescriptionInput = document.getElementById(
   "profile-description-input"
 );
-
-const profileImageForm = document.forms["profile-image-form"];
-const profileEditForm = document.forms["profile-form"];
-const addCardFormElement = document.forms["add-card-form"];
 
 const popupWithImage = new PopupWithImage("#image-modal");
 popupWithImage.setEventListeners();
@@ -94,12 +89,19 @@ function handleImageClick(link, name) {
   popupWithImage.open({ name, link });
 }
 
-function handleSubmit(request, popupInstance, loadingText = "Saving...") {
+function handleSubmit(
+  request,
+  popupInstance,
+  reset,
+  loadingText = "Saving..."
+) {
   popupInstance.renderLoading(true, loadingText);
   request()
     .then(() => {
       popupInstance.close();
-      popupInstance.reset();
+      if (reset) {
+        popupInstance.reset();
+      }
     })
     .catch(console.error)
     .finally(() => {
@@ -113,17 +115,16 @@ function handleEditProfileSubmit(inputValues) {
       userInfo.setUserInfo(userData);
     });
   }
-  handleSubmit(makeRequest, profileEditModal);
+  handleSubmit(makeRequest, profileEditModal, true);
 }
 
 function handleAddCardSubmit(inputValues) {
   function makeRequest() {
     return api.createCard(inputValues).then((res) => {
       renderCard(res);
-      addCardPopup.close();
     });
   }
-  handleSubmit(makeRequest, addCardPopup);
+  handleSubmit(makeRequest, addCardPopup, true);
 }
 
 function handleDeleteButton(card) {
@@ -134,7 +135,7 @@ function handleDeleteButton(card) {
         card.deleteCard();
       });
     }
-    handleSubmit(makeRequest, deleteImageModal);
+    handleSubmit(makeRequest, deleteImageModal, false);
   });
 }
 
@@ -167,21 +168,16 @@ function handleChangeProfilePicture(inputUrl) {
       userInfo.setProfileImage(res);
     });
   }
-  handleSubmit(makeRequest, profileImageModal);
+  handleSubmit(makeRequest, profileImageModal, true);
 }
 
 //ProfileEditButtonEventListeners
 profileEditButton.addEventListener("click", () => {
-  formValidators["profile-form"].hideInputError(profileEditForm);
   const { name, about } = userInfo.getUserInfo();
   profileTitleInput.value = name;
   profileDescriptionInput.value = about;
   profileEditModal.open();
   formValidators["profile-form"].resetValidation();
-});
-//ProfileEditImageEventListeners
-profileEditImage.addEventListener("click", () => {
-  formValidators["profile-image-form"].hideInputError(profileImageForm);
 });
 //Add Card Button Event Listeners
 addNewCardButton.addEventListener("click", () => {
@@ -226,17 +222,13 @@ api
 
 // Form Validators
 
-// define an object for storing validators
 const formValidators = {};
 
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     const validator = new FormValidator(config, formElement);
-    // Here you get the name of the form (if you don’t have it then you need to add it into each form in `index.html` first)
     const formName = formElement.getAttribute("name");
-
-    // Here you store the validator using the `name` of the form
     formValidators[formName] = validator;
     validator.enableValidation();
   });
