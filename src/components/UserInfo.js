@@ -2,7 +2,7 @@ export default class UserInfo {
   constructor({ titleSelector, descriptionSelector, profileImage }) {
     this._titleElement = document.querySelector(titleSelector);
     this._descriptionElement = document.querySelector(descriptionSelector);
-    this._imageSelector = document.querySelector(profileImage);
+    this._imageElement = document.querySelector(profileImage);
   }
 
   getUserInfo() {
@@ -18,6 +18,6 @@ export default class UserInfo {
     this._descriptionElement.textContent = inputValues.about;
   }
   setProfileImage(image) {
-    this._imageSelector.src = image.avatar;
+    this._imageElement.src = image.avatar;
   }
 }

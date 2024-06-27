@@ -34,10 +34,6 @@ export default class Popup {
     }
   }
 
-  renderLoading(buttonText) {
-    this._modalButton.textContent = buttonText;
-  }
-
   setEventListeners() {
     this._closeButton.addEventListener("click", () => this.close());
   }

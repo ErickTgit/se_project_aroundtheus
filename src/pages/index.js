@@ -94,53 +94,48 @@ function handleImageClick(link, name) {
   popupWithImage.open({ name, link });
 }
 
-function handleEditProfileSubmit(inputValues) {
-  profileEditModal.renderLoading("Saving...");
-  api
-    .updateUserInfo(inputValues)
-    .then((res) => {
-      userInfo.setUserInfo(res);
-      profileEditValidator.resetValidation();
+function handleSubmit(request, popupInstance, loadingText = "Saving...") {
+  // here we change the button text
+  popupInstance.renderLoading(true, loadingText);
+  request()
+    .then(() => {
+      popupInstance.close();
+      popupInstance.reset();
     })
-    .catch((err) => {
-      console.log(`Unable to process request, ${err}`);
-    })
+    .catch(console.error)
     .finally(() => {
-      profileEditModal.close();
-      profileEditModal.renderLoading("Save");
+      popupInstance.renderLoading(false);
     });
 }
 
+function handleEditProfileSubmit(inputValues) {
+  function makeRequest() {
+    return api.updateUserInfo(inputValues).then((userData) => {
+      userInfo.setUserInfo(userData);
+    });
+  }
+  handleSubmit(makeRequest, profileEditModal);
+}
+
 function handleAddCardSubmit(inputValues) {
-  addCardPopup.renderLoading("Loading...");
-  api
-    .createCard(inputValues)
-    .then((res) => {
+  function makeRequest() {
+    return api.createCard(inputValues).then((res) => {
       renderCard(res);
       addCardPopup.close();
-      addCardValidator.resetValidation();
-    })
-    .finally(() => {
-      addCardPopup.renderLoading("Save");
     });
+  }
+  handleSubmit(makeRequest, addCardPopup);
 }
 
 function handleDeleteButton(card) {
   deleteImageModal.open();
-  deleteImageModal.handleDelete(() => {
-    deleteImageModal.renderLoading("Saving...");
-    api
-      .deleteCard(card.id)
-      .then(() => {
+  return deleteImageModal.handleDelete(() => {
+    function makeRequest() {
+      return api.deleteCard(card.id).then(() => {
         card.deleteCard();
-      })
-      .catch((err) => {
-        console.log(`Unable to process request, ${err}`);
-      })
-      .finally(() => {
-        deleteImageModal.close();
-        deleteImageModal.renderLoading("Yes");
       });
+    }
+    handleSubmit(makeRequest, deleteImageModal);
   });
 }
 
@@ -168,41 +163,31 @@ function handleLikeButton(card) {
 }
 
 function handleChangeProfilePicture(inputUrl) {
-  profileImageModal.renderLoading("Loading...");
-  api
-    .updateProfileImage(inputUrl)
-    .then((res) => {
+  function makeRequest() {
+    return api.updateProfileImage(inputUrl).then((res) => {
       userInfo.setProfileImage(res);
-      profileImageModal.close();
-      profileImageForm.resetValidation();
-      profileImageValidator.disableSubmit();
-    })
-    .catch((err) => {
-      console.log(`Unable to process request, ${err}`);
-    })
-    .finally(() => {
-      profileImageModal.renderLoading("Save");
     });
+  }
+  handleSubmit(makeRequest, profileImageModal);
 }
 
 //ProfileEditButtonEventListeners
 profileEditButton.addEventListener("click", () => {
-  profileEditValidator.hideInputError(profileEditForm);
+  formValidators["profile-form"].hideInputError(profileEditForm);
   const { name, about } = userInfo.getUserInfo();
   profileTitleInput.value = name;
   profileDescriptionInput.value = about;
   profileEditModal.open();
-  profileEditValidator.resetValidation();
+  formValidators["profile-form"].resetValidation();
 });
 //ProfileEditImageEventListeners
 profileEditImage.addEventListener("click", () => {
-  profileEditValidator.hideInputError(profileImageForm);
-  const { url } = userInfo.getUserInfo();
+  formValidators["profile-image-form"].hideInputError(profileImageForm);
 });
 //Add Card Button Event Listeners
 addNewCardButton.addEventListener("click", () => {
   addCardPopup.open();
-  addCardValidator.resetValidation();
+  formValidators["add-card-form"].resetValidation();
 });
 
 profileImageEditButton.addEventListener("click", () => {
@@ -241,10 +226,21 @@ api
   });
 
 // Form Validators
-const profileImageValidator = new FormValidator(config, profileImageForm);
-const profileEditValidator = new FormValidator(config, profileEditForm);
-const addCardValidator = new FormValidator(config, addCardFormElement);
 
-profileEditValidator.enableValidation();
-addCardValidator.enableValidation();
-profileImageValidator.enableValidation();
+// define an object for storing validators
+const formValidators = {};
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    // Here you get the name of the form (if you don’t have it then you need to add it into each form in `index.html` first)
+    const formName = formElement.getAttribute("name");
+
+    // Here you store the validator using the `name` of the form
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(config);
